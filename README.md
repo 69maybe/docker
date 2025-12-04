@@ -1,18 +1,48 @@
-# Docker Laravel + MySQL + React
+🚀 QR Order System
 
-## Yêu cầu
-- Docker Desktop
-- WSL2
+Node.js (Express) + React + MySQL + Docker
 
-## Cách chạy:
-docker compose up -d
+Hệ thống gọi món bằng QR Code dành cho nhà hàng, chạy hoàn toàn trong Docker để giúp các developer cài đặt nhanh chóng, đồng nhất môi trường và dễ dàng deploy.
 
-## Truy cập:
-Laravel: http://localhost:8000  
-React: http://localhost:3000  
-MySQL: localhost:3307 (root/root)
+📂 Cấu trúc thư mục
+project/
+│  README.md
+│  docker-compose.yml
+│
+├── backend/              # Express API
+│   ├── Dockerfile
+│   ├── package.json
+│   └── src/
+│
+├── frontend/             # React App
+│   ├── Dockerfile
+│   ├── package.json
+│   └── src/
+│
+└── database/
+    └── qr_order_system.sql
 
-## Chạy lệnh Laravel:
-docker exec -it laravel_app bash
-composer install
-php artisan migrate
+🧰 Yêu cầu hệ thống
+
+Docker Desktop
+
+WSL2 (Windows)
+
+Không cần cài Node, MySQL, NPM → Docker sẽ lo tất cả.
+
+🐳 Chạy bằng Docker
+🔥 1. Build & start toàn bộ hệ thống
+
+Trong thư mục project:
+
+docker compose up --build
+
+
+Docker sẽ khởi chạy 3 service:
+
+Service	Port	Mô tả
+frontend	http://localhost:3000
+	React UI
+backend	http://localhost:5000
+	Express API
+db (MySQL)	localhost:3306	Database
